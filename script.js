@@ -56,6 +56,11 @@ function displayCharacters(characters) {
     var characterDiv = document.createElement("div");
     characterDiv.className = "character";
     characterDiv.innerHTML =
+      '<img src="' +
+      character.image +
+      '" alt="' +
+      character.name +
+      '">' +
       "<h3>" +
       character.name +
       "</h3>" +
