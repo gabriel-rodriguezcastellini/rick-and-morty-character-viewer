@@ -3,23 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rick & Morty</title>
+    <title>Rick & Morty Character Viewer</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Rick & Morty</h1>
-      <button id="get-all-characters">Personajes</button>
-      <div class="filters">
-        <input type="text" id="name" placeholder="Name" />
-        <input type="text" id="status" placeholder="Status" />
-        <input type="text" id="species" placeholder="Species" />
-        <input type="text" id="type" placeholder="Type" />
-        <input type="text" id="gender" placeholder="Gender" />
-        <button id="filter-characters">Buscar</button>
+      <h1>Rick & Morty Character Viewer</h1>
+      <div class="controls">
+        <button id="get-all-characters">Get All Characters</button>
+        <div class="filters">
+          <input type="text" id="name" placeholder="Name" />
+          <input
+            type="text"
+            id="status"
+            placeholder="Status (alive, dead, unknown)"
+          />
+          <input type="text" id="species" placeholder="Species" />
+          <input type="text" id="type" placeholder="Type" />
+          <input
+            type="text"
+            id="gender"
+            placeholder="Gender (female, male, genderless, unknown)"
+          />
+          <button id="filter-characters">Search</button>
+        </div>
       </div>
-      <div id="character-list"></div>
       <div id="error-message"></div>
+      <div id="character-list"></div>
     </div>
     <script src="script.js"></script>
   </body>
