@@ -75,9 +75,32 @@ function displayCharacters(characters) {
       "</p>" +
       "<p>Gender: " +
       character.gender +
-      "</p>";
+      "</p>" +
+      '<button onclick="toggleDetails(this)">Show More</button>' +
+      '<div class="extra-details" style="display: none;">' +
+      "<p>Origin: " +
+      character.origin.name +
+      "</p>" +
+      "<p>Location: " +
+      character.location.name +
+      "</p>" +
+      "<p>Episodes: " +
+      character.episode.length +
+      "</p>" +
+      "</div>";
     characterList.appendChild(characterDiv);
   });
+}
+
+function toggleDetails(button) {
+  var extraDetails = button.nextElementSibling;
+  if (extraDetails.style.display === "none") {
+    extraDetails.style.display = "block";
+    button.textContent = "Show Less";
+  } else {
+    extraDetails.style.display = "none";
+    button.textContent = "Show More";
+  }
 }
 
 function showError(message) {

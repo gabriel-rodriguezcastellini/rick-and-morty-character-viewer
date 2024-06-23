@@ -78,6 +78,13 @@ button:hover {
   margin-bottom: 10px;
 }
 
+.extra-details {
+  background-color: #e1e1e1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
 #error-message {
   color: red;
   margin-top: 20px;
