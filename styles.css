@@ -107,3 +107,9 @@ button:hover {
 .pagination button:hover {
   background-color: #666;
 }
+
+.pagination button.active {
+  background-color: #61dafb;
+  color: #282c34;
+  cursor: default;
+}

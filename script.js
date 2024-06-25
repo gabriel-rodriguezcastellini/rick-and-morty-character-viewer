@@ -13,21 +13,25 @@ function getAllCharacters(page) {
       return response.json();
     })
     .then(function (data) {
+      clearError();
       displayCharacters(data.results);
-      setupPagination(data.info);
+      setupPagination(data.info, page);
     })
     .catch(function (error) {
       showError("Failed to fetch characters");
     });
 }
 
-function setupPagination(info) {
+function setupPagination(info, currentPage) {
   var pagination = document.getElementById("pagination");
   pagination.innerHTML = "";
 
   for (var i = 1; i <= info.pages; i++) {
     var pageButton = document.createElement("button");
     pageButton.textContent = i;
+    if (i == currentPage) {
+      pageButton.classList.add("active");
+    }
     pageButton.addEventListener("click", function () {
       getAllCharacters(this.textContent);
     });
@@ -59,8 +63,9 @@ function filterCharacters() {
       return response.json();
     })
     .then(function (data) {
+      clearError();
       displayCharacters(data.results);
-      setupPagination(data.info);
+      setupPagination(data.info, 1);
     })
     .catch(function (error) {
       showError("Failed to fetch characters with the given filters");
@@ -124,4 +129,9 @@ function toggleDetails(button) {
 function showError(message) {
   var errorMessage = document.getElementById("error-message");
   errorMessage.textContent = message;
+}
+
+function clearError() {
+  var errorMessage = document.getElementById("error-message");
+  errorMessage.textContent = "";
 }
