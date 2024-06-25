@@ -89,3 +89,21 @@ button:hover {
   color: red;
   margin-top: 20px;
 }
+
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #444;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:hover {
+  background-color: #666;
+}

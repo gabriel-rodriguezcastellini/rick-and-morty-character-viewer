@@ -1,21 +1,38 @@
 document
   .getElementById("get-all-characters")
-  .addEventListener("click", getAllCharacters);
+  .addEventListener("click", function () {
+    getAllCharacters(1);
+  });
 document
   .getElementById("filter-characters")
   .addEventListener("click", filterCharacters);
 
-function getAllCharacters() {
-  fetch("https://rickandmortyapi.com/api/character")
+function getAllCharacters(page) {
+  fetch("https://rickandmortyapi.com/api/character?page=" + page)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       displayCharacters(data.results);
+      setupPagination(data.info);
     })
     .catch(function (error) {
       showError("Failed to fetch characters");
     });
+}
+
+function setupPagination(info) {
+  var pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+
+  for (var i = 1; i <= info.pages; i++) {
+    var pageButton = document.createElement("button");
+    pageButton.textContent = i;
+    pageButton.addEventListener("click", function () {
+      getAllCharacters(this.textContent);
+    });
+    pagination.appendChild(pageButton);
+  }
 }
 
 function filterCharacters() {
@@ -43,6 +60,7 @@ function filterCharacters() {
     })
     .then(function (data) {
       displayCharacters(data.results);
+      setupPagination(data.info);
     })
     .catch(function (error) {
       showError("Failed to fetch characters with the given filters");
